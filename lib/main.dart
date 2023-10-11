@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/viewmodels/sign_in_up_viewmodel.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:smart_home/views/home_view.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(),
+      home: const HomeView(),
       builder: EasyLoading.init(),
     );
   }
