@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:smart_home/models/base_api_response.dart';
-import 'package:smart_home/models/per_device_model.dart';
+import 'package:smart_home/models/per_date_model.dart';
 import 'package:smart_home/service/service.dart';
 import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/utils/strings.dart';
@@ -11,18 +11,20 @@ import 'package:smart_home/utils/urls.dart';
 import 'package:smart_home/utils/utils.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 
-class PerDeviceViewModel extends ChangeNotifier {
+class PerDateViewModel extends ChangeNotifier {
   final Service service = Service();
-  DateTime? pickedDate = DateTime.fromMillisecondsSinceEpoch(1672531200 * 1000);
-  // DateTime? pickedDate;
+  // DateTime? startDate ;
+  // DateTime? endDate;
+  DateTime? startDate = DateTime.fromMillisecondsSinceEpoch(1672531200 * 1000);
+  DateTime? endDate = DateTime.fromMillisecondsSinceEpoch(1673541231 * 1000);
   int page = 1;
 
-  List<PerDeviceModel> deviceList = [];
+  List<PerDateModel> dateList = [];
 
   void process() async {
-    deviceList = [];
+    dateList = [];
     BuildContext context = NavigationService.navigatorKey.currentState!.context;
-    if (pickedDate == null) {
+    if (startDate == null || endDate == null) {
       Utils.showSnackBar(AppString.selectDate, NavigationService.navigatorKey.currentContext!);
       return;
     }
@@ -30,9 +32,9 @@ class PerDeviceViewModel extends ChangeNotifier {
     Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(true);
 
     try {
-      BaseAPIResponse response =
-          await service.perDeviceAndDateRequest(UrlConstants.getPerDeviceAndDateEndpoint(), {
-        'date': DateFormat('M/d/y').format(pickedDate!),
+      BaseAPIResponse response = await service.perDateRequest(UrlConstants.getPerDateEndpoint(), {
+        'start_date': DateFormat('M/d/y').format(startDate!),
+        'end_date': DateFormat('M/d/y').format(endDate!),
         'page': page,
       });
       if (response.error) {
@@ -44,7 +46,7 @@ class PerDeviceViewModel extends ChangeNotifier {
         if (context.mounted) {
           Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
         }
-        deviceList = response.data.map<PerDeviceModel>((data) => PerDeviceModel.fromJson(data)).toList();
+        dateList = response.data.map<PerDateModel>((data) => PerDateModel.fromJson(data)).toList();
       }
     } catch (e) {
       if (context.mounted) {
@@ -55,8 +57,9 @@ class PerDeviceViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setDate(DateTime date) {
-    pickedDate = date;
+  setDate(DateTime start, DateTime end) {
+    startDate = start;
+    endDate = end;
     notifyListeners();
   }
 

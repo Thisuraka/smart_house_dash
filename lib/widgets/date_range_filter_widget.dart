@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:smart_home/style.dart';
 import 'package:smart_home/utils/strings.dart';
 
 class DateRangeFilterWidget extends StatefulWidget {
+  final DateTime? pickedStartDate;
+  final DateTime? pickedEndDate;
   final Function(DateTime startDate, DateTime endDate) selectedDates;
 
-  const DateRangeFilterWidget({super.key, required this.selectedDates});
+  const DateRangeFilterWidget(
+      {super.key, this.pickedStartDate, this.pickedEndDate, required this.selectedDates});
 
   @override
   State<DateRangeFilterWidget> createState() => _DateRangeFilterWidgetState();
@@ -35,17 +39,19 @@ class _DateRangeFilterWidgetState extends State<DateRangeFilterWidget> {
             color: AppColors.accentColor,
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                AppString.pickStartEndDate,
-                style: TextStyle(
+                widget.pickedStartDate != null && widget.pickedEndDate != null
+                    ? '${DateFormat('M/d/y').format(widget.pickedStartDate!)} -- ${DateFormat('M/d/y').format(widget.pickedEndDate!)}'
+                    : AppString.pickStartEndDate,
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.calendar_month,
                 color: Colors.white,
               ),

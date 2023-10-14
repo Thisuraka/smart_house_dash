@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/utils/calculations.dart';
 
 import 'package:smart_home/utils/strings.dart';
-import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
+import 'package:smart_home/viewmodels/per_date_viewmodel.dart';
 import 'package:smart_home/widgets/tables/table_header_item.dart';
 import 'package:smart_home/widgets/tables/table_row_item.dart';
 
-class PerDeviceDatagrid extends StatelessWidget {
-  const PerDeviceDatagrid({super.key});
+class PerDateDatagrid extends StatelessWidget {
+  const PerDateDatagrid({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PerDeviceViewModel>(builder: (context, model, child) {
+    return Consumer<PerDateViewModel>(builder: (context, model, child) {
       return Column(
         children: [
           const Padding(
@@ -22,7 +23,7 @@ class PerDeviceDatagrid extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TableHeaderItem(content: AppString.perDeviceDataTableHeaderDevice),
+                  TableHeaderItem(content: AppString.perDeviceDataTableHeaderDate),
                   TableHeaderItem(content: AppString.perDeviceDataTableHeaderUsageHours),
                   TableHeaderItem(content: AppString.perDeviceDataTableHeaderWattage),
                   TableHeaderItem(content: AppString.perDeviceDataTableHeaderCost),
@@ -38,23 +39,25 @@ class PerDeviceDatagrid extends StatelessWidget {
               child: ListView.separated(
                   separatorBuilder: (BuildContext context, int index) => const Divider(),
                   padding: const EdgeInsets.all(8),
-                  itemCount: model.deviceList.length,
+                  itemCount: model.dateList.length,
                   itemBuilder: (BuildContext context, int index) {
                     List<String> values = [
-                      (model.deviceList[index].deviceName ?? AppString.dataUnavailable),
-                      (model.deviceList[index].usageHours != null
-                          ? model.deviceList[index].usageHours.toString()
+                      (model.dateList[index].date != null
+                          ? DateFormat('yyyy:MM:dd').format(model.dateList[index].date!)
                           : AppString.dataUnavailable),
-                      (model.deviceList[index].wattage != null
-                          ? (Calculations.getWattage(model.deviceList[index].wattage!)).toString()
+                      (model.dateList[index].usageHours != null
+                          ? model.dateList[index].usageHours.toString()
                           : AppString.dataUnavailable),
-                      (model.deviceList[index].costPerKwh != null
-                          ? (Calculations.getCostPerKwh(model.deviceList[index].costPerKwh!)).toString()
+                      (model.dateList[index].wattage != null
+                          ? (Calculations.getWattage(model.dateList[index].wattage!)).toString()
+                          : AppString.dataUnavailable),
+                      (model.dateList[index].costPerKwh != null
+                          ? (Calculations.getCostPerKwh(model.dateList[index].costPerKwh!)).toString()
                           : AppString.dataUnavailable),
                       (Calculations.getTotalCost(
-                              Calculations.getCostPerKwh(model.deviceList[index].costPerKwh!),
-                              Calculations.getWattage(model.deviceList[index].wattage!),
-                              model.deviceList[index].usageHours!)
+                              Calculations.getCostPerKwh(model.dateList[index].costPerKwh!),
+                              Calculations.getWattage(model.dateList[index].wattage!),
+                              model.dateList[index].usageHours!)
                           .toString())
                     ];
 

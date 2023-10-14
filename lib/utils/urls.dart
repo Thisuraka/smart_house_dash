@@ -10,4 +10,12 @@ class UrlConstants {
       return "";
     }
   }
+
+  static String getPerDateEndpoint() {
+    if (environment == "development") {
+      return "$baseUrl/daily-analysis";
+    } else {
+      return "";
+    }
+  }
 }

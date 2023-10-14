@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
+import 'package:smart_home/viewmodels/per_date_viewmodel.dart';
 import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
 import 'package:smart_home/views/home_view.dart';
 
@@ -14,6 +15,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: ((context) => PerDeviceViewModel()),
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => PerDateViewModel()),
       ),
       ChangeNotifierProvider(
         create: ((context) => LoaderViewmodel()),

@@ -5,6 +5,7 @@ import 'package:smart_home/utils/assets.dart';
 import 'package:smart_home/utils/strings.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
+import 'package:smart_home/views/per_date/per_date_tab.dart';
 import 'package:smart_home/views/per_device/per_device_tab.dart';
 import 'package:smart_home/widgets/loader_overlay.dart';
 
@@ -51,8 +52,8 @@ class HomeView extends StatelessWidget {
                         label: Text(AppString.perDevice),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.circle, color: Colors.white),
-                        label: Text('Set here'),
+                        icon: Icon(Icons.calendar_month_rounded, color: Colors.white),
+                        label: Text(AppString.perDay),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.circle, color: Colors.white),
@@ -71,9 +72,9 @@ class HomeView extends StatelessWidget {
                   if (model.selectedIndex == 1)
                     Expanded(
                       child: Container(
-                        color: AppColors.bodyColor,
-                        padding: const EdgeInsets.all(20),
-                      ),
+                          color: AppColors.bodyColor,
+                          padding: const EdgeInsets.all(20),
+                          child: const PerDateTab()),
                     ),
                   if (model.selectedIndex == 2)
                     Expanded(

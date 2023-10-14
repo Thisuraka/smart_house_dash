@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:smart_home/models/per_date_model.dart';
 import 'package:smart_home/utils/calculations.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import 'package:smart_home/models/per_device_model.dart';
 import 'package:smart_home/style.dart';
 import 'package:smart_home/utils/strings.dart';
 
-class PerDeviceChart extends StatelessWidget {
-  const PerDeviceChart({required this.perDeviceList, super.key});
+class PerDateChart extends StatelessWidget {
+  const PerDateChart({required this.perDateList, super.key});
 
-  final List<PerDeviceModel> perDeviceList;
+  final List<PerDateModel> perDateList;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,11 @@ class PerDeviceChart extends StatelessWidget {
       primaryXAxis: CategoryAxis(title: AxisTitle(text: AppString.device)),
       primaryYAxis: NumericAxis(title: AxisTitle(text: AppString.perDeviceDataTableHeaderTotalCost)),
       legend: const Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
-      series: <ChartSeries<PerDeviceChartData, String>>[
-        StackedBarSeries<PerDeviceChartData, String>(
+      series: <ChartSeries<PerDateChartData, String>>[
+        StackedBarSeries<PerDateChartData, String>(
           dataSource: getDataForGraph(),
-          xValueMapper: (PerDeviceChartData value, _) => value.device,
-          yValueMapper: (PerDeviceChartData value, _) => value.units,
+          xValueMapper: (PerDateChartData value, _) => value.device,
+          yValueMapper: (PerDateChartData value, _) => value.units,
           name: AppString.device,
           color: AppColors.chartBlue,
           dataLabelSettings: dataLabelSettings(),
@@ -33,13 +34,13 @@ class PerDeviceChart extends StatelessWidget {
     );
   }
 
-  List<PerDeviceChartData> getDataForGraph() {
-    List<PerDeviceChartData> dataSet = [];
+  List<PerDateChartData> getDataForGraph() {
+    List<PerDateChartData> dataSet = [];
 
-    for (final data in perDeviceList.reversed) {
+    for (final data in perDateList.reversed) {
       dataSet.add(
-        PerDeviceChartData(
-            data.deviceName ?? 'ERROR',
+        PerDateChartData(
+            DateFormat('yyyy:MM:dd').format(data.date!),
             Calculations.getTotalCost(Calculations.getCostPerKwh(data.costPerKwh!),
                 Calculations.getWattage(data.wattage!), data.usageHours!)),
       );
@@ -59,8 +60,8 @@ class PerDeviceChart extends StatelessWidget {
       );
 }
 
-class PerDeviceChartData {
-  PerDeviceChartData(
+class PerDateChartData {
+  PerDateChartData(
     this.device,
     this.units,
   );
