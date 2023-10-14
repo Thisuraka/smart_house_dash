@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/viewmodels/device_summary_viewmodel.dart';
+import 'package:smart_home/viewmodels/per_date_viewmodel.dart';
+import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
 
 class NavigationViewModel extends ChangeNotifier {
   int selectedIndex = 0;

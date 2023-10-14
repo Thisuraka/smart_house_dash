@@ -34,6 +34,11 @@ class DeviceSummaryViewModel extends ChangeNotifier {
         }
         deviceList =
             response.data.map<DeviceSummaryModel>((data) => DeviceSummaryModel.fromJson(data)).toList();
+
+        if (deviceList.isEmpty) {
+          Utils.showSnackBar(AppString.dataUnavailable, NavigationService.navigatorKey.currentContext!);
+          clear();
+        }
       }
     } catch (e) {
       if (context.mounted) {
@@ -44,5 +49,8 @@ class DeviceSummaryViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  clear() {}
+  clear() {
+    deviceList = [];
+    notifyListeners();
+  }
 }

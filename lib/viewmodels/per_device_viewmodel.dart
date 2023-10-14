@@ -71,5 +71,8 @@ class PerDeviceViewModel extends ChangeNotifier {
 
   clear() {
     updatePageNumber(reset: true);
+    deviceList = [];
+    pickedDate = null;
+    notifyListeners();
   }
 }

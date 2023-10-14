@@ -47,6 +47,11 @@ class PerDateViewModel extends ChangeNotifier {
           Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
         }
         dateList = response.data.map<PerDateModel>((data) => PerDateModel.fromJson(data)).toList();
+
+        if (dateList.isEmpty) {
+          Utils.showSnackBar(AppString.dataUnavailable, NavigationService.navigatorKey.currentContext!);
+          clear();
+        }
       }
     } catch (e) {
       if (context.mounted) {
@@ -74,5 +79,9 @@ class PerDateViewModel extends ChangeNotifier {
 
   clear() {
     updatePageNumber(reset: true);
+    dateList = [];
+    startDate = null;
+    endDate = null;
+    notifyListeners();
   }
 }
