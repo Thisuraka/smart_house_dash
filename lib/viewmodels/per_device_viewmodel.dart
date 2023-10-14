@@ -4,6 +4,7 @@ import 'package:smart_home/models/per_device_and_date_model.dart';
 class PerDeviceViewModel extends ChangeNotifier {
   DateTime? startDate;
   DateTime? endDate;
+  int page = 1;
 
   List<PerDeviceModel> sampleData = [
     PerDeviceModel(
@@ -25,5 +26,18 @@ class PerDeviceViewModel extends ChangeNotifier {
   setStartAndEndDate(DateTime startDate, DateTime endDate) {
     startDate = startDate;
     endDate = endDate;
+  }
+
+  updatePageNumber({bool reset = false}) {
+    if (reset) {
+      page = 1;
+    } else {
+      page++;
+    }
+    notifyListeners();
+  }
+
+  clear() {
+    updatePageNumber(reset: true);
   }
 }
