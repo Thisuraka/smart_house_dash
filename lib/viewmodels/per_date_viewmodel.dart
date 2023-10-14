@@ -13,10 +13,10 @@ import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 
 class PerDateViewModel extends ChangeNotifier {
   final Service service = Service();
-  // DateTime? startDate ;
-  // DateTime? endDate;
-  DateTime? startDate = DateTime.fromMillisecondsSinceEpoch(1672531200 * 1000);
-  DateTime? endDate = DateTime.fromMillisecondsSinceEpoch(1673541231 * 1000);
+  DateTime? startDate;
+  DateTime? endDate;
+  // DateTime? startDate = DateTime.fromMillisecondsSinceEpoch(1672531200 * 1000);
+  // DateTime? endDate = DateTime.fromMillisecondsSinceEpoch(1673541231 * 1000);
   int page = 1;
 
   List<PerDateModel> dateList = [];

@@ -13,8 +13,8 @@ import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 
 class PerDeviceViewModel extends ChangeNotifier {
   final Service service = Service();
-  DateTime? pickedDate = DateTime.fromMillisecondsSinceEpoch(1672531200 * 1000);
-  // DateTime? pickedDate;
+  // DateTime? pickedDate = DateTime.fromMillisecondsSinceEpoch(1672531200 * 1000);
+  DateTime? pickedDate;
   int page = 1;
 
   List<PerDeviceModel> deviceList = [];
