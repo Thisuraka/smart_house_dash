@@ -35,21 +35,24 @@ class HomeView extends StatelessWidget {
                 NavigationRail(
                   selectedIndex: model.selectedIndex,
                   groupAlignment: 0,
+                  elevation: 1,
+                  backgroundColor: defaultColor,
+                  indicatorColor: accentColor,
                   onDestinationSelected: (int index) {
                     model.updateIndex(index);
                   },
                   labelType: NavigationRailLabelType.all,
                   destinations: const <NavigationRailDestination>[
                     NavigationRailDestination(
-                      icon: Icon(Icons.devices_fold),
+                      icon: Icon(Icons.devices_fold, color: Colors.white),
                       label: Text(AppString.perDevice),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.circle),
+                      icon: Icon(Icons.circle, color: Colors.white),
                       label: Text('Set here'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.circle),
+                      icon: Icon(Icons.circle, color: Colors.white),
                       label: Text('Set here'),
                     ),
                   ],

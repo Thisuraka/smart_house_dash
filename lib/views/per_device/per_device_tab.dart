@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_home/style.dart';
-import 'package:smart_home/utils/strings.dart';
 import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
 import 'package:smart_home/widgets/date_filter_widget.dart';
 

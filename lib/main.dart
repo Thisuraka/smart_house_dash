@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigationService.navigatorKey,
       theme: ThemeData(
+        fontFamily: 'CaviarDreams',
         useMaterial3: true,
       ),
       home: const HomeView(),
