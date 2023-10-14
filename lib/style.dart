@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-const defaultColor = Color(0xFFAFBAF3);
-const accentColor = Color(0xFF919BCF);
+class AppColors {
+  static Color defaultColor = const Color(0xFFAFBAF3);
+  static Color accentColor = const Color(0xFF919BCF);
 
-const inactiveColor = Color(0xFFCFCFCF);
-const warningAlertColor = Color(0xFFFF7F50);
-const successAlertColor = Color(0xFF009688);
-const errorAlertColor = Color(0xFFFF4757);
-const loadingPlaceholderColor = Color(0xFFE0E0E0);
+  static Color inactiveColor = const Color(0xFFCFCFCF);
+  static Color warningAlertColor = const Color(0xFFFF7F50);
+  static Color successAlertColor = const Color(0xFF009688);
+  static Color errorAlertColor = const Color(0xFFFF4757);
+  static Color loadingPlaceholderColor = const Color(0xFFE0E0E0);
+
+  
+  static Color chartBlue =const Color(0xFF7BA7FF);
+}
 
 //Fonts and text
 const labelStyle = TextStyle(color: Colors.black26, fontWeight: FontWeight.w500, fontSize: 15.0);

@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        backgroundColor: defaultColor,
+        backgroundColor: AppColors.defaultColor,
         title: Align(
           alignment: Alignment.center,
           child: Image.asset(
@@ -34,10 +34,10 @@ class HomeView extends StatelessWidget {
               children: <Widget>[
                 NavigationRail(
                   selectedIndex: model.selectedIndex,
-                  groupAlignment: 0,
+                  groupAlignment: -1.0,
                   elevation: 1,
-                  backgroundColor: defaultColor,
-                  indicatorColor: accentColor,
+                  backgroundColor: AppColors.defaultColor,
+                  indicatorColor: AppColors.accentColor,
                   onDestinationSelected: (int index) {
                     model.updateIndex(index);
                   },

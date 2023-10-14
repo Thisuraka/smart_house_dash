@@ -31,9 +31,9 @@ class _DateFilterWidgetState extends State<DateFilterWidget> {
         child: Container(
           width: 250,
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          decoration: const BoxDecoration(
-            color: accentColor,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+          decoration: BoxDecoration(
+            color: AppColors.accentColor,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
