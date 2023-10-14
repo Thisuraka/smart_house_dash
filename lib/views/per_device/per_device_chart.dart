@@ -15,7 +15,7 @@ class PerDeviceChart extends StatelessWidget {
       margin: const EdgeInsets.all(16.0),
       title: ChartTitle(text: AppString.perDevice, alignment: ChartAlignment.near),
       primaryXAxis: CategoryAxis(title: AxisTitle(text: AppString.device)),
-      primaryYAxis: NumericAxis(title: AxisTitle(text: AppString.units)),
+      primaryYAxis: NumericAxis(title: AxisTitle(text: AppString.perDeviceDataTableHeaderTotalCost)),
       legend: const Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
       series: <ChartSeries<PerDeviceChartData, String>>[
         StackedBarSeries<PerDeviceChartData, String>(
