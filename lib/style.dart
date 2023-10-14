@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const defaultColor = Color(0xFF2D8CF0);
+const defaultColor = Color(0xFFBE90D4);
 const inactiveColor = Color(0xFFCFCFCF);
 const warningAlertColor = Color(0xFFFF7F50);
 const successAlertColor = Color(0xFF009688);

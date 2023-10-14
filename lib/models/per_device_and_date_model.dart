@@ -1,12 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class PerDeviceModel {
+  final String? date;
   final String? deviceName;
   final int? usageHours;
   final int? wattage;
   final double? costPerKwh;
 
   PerDeviceModel({
+    this.date,
     this.deviceName,
     this.usageHours,
     this.wattage,
@@ -14,12 +17,14 @@ class PerDeviceModel {
   });
 
   PerDeviceModel copyWith({
+    String? date,
     String? deviceName,
     int? usageHours,
     int? wattage,
     double? costPerKwh,
   }) {
     return PerDeviceModel(
+      date: date ?? this.date,
       deviceName: deviceName ?? this.deviceName,
       usageHours: usageHours ?? this.usageHours,
       wattage: wattage ?? this.wattage,
@@ -29,19 +34,21 @@ class PerDeviceModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'device_name': deviceName,
-      'usage_hours': usageHours,
+      'date': date,
+      'deviceName': deviceName,
+      'usageHours': usageHours,
       'wattage': wattage,
-      'cost_per_kwh': costPerKwh,
+      'costPerKwh': costPerKwh,
     };
   }
 
   factory PerDeviceModel.fromMap(Map<String, dynamic> map) {
     return PerDeviceModel(
-      deviceName: map['device_name'] != null ? map['device_name'] as String : null,
-      usageHours: map['usage_hours'] != null ? map['usage_hours'] as int : null,
+      date: map['date'] != null ? map['date'] as String : null,
+      deviceName: map['deviceName'] != null ? map['deviceName'] as String : null,
+      usageHours: map['usageHours'] != null ? map['usageHours'] as int : null,
       wattage: map['wattage'] != null ? map['wattage'] as int : null,
-      costPerKwh: map['cost_per_kwh'] != null ? map['cost_per_kwh'] as double : null,
+      costPerKwh: map['costPerKwh'] != null ? map['costPerKwh'] as double : null,
     );
   }
 
@@ -52,14 +59,15 @@ class PerDeviceModel {
 
   @override
   String toString() {
-    return 'PerDeviceModel(deviceName: $deviceName, usageHours: $usageHours, wattage: $wattage, costPerKwh: $costPerKwh)';
+    return 'PerDeviceModel(date: $date, deviceName: $deviceName, usageHours: $usageHours, wattage: $wattage, costPerKwh: $costPerKwh)';
   }
 
   @override
   bool operator ==(covariant PerDeviceModel other) {
     if (identical(this, other)) return true;
 
-    return other.deviceName == deviceName &&
+    return other.date == date &&
+        other.deviceName == deviceName &&
         other.usageHours == usageHours &&
         other.wattage == wattage &&
         other.costPerKwh == costPerKwh;
@@ -67,23 +75,6 @@ class PerDeviceModel {
 
   @override
   int get hashCode {
-    return deviceName.hashCode ^ usageHours.hashCode ^ wattage.hashCode ^ costPerKwh.hashCode;
-  }
-}
-
-class PerDeviceAndDateModel {
-  final Map<String, PerDeviceModel> dateUsages;
-
-  PerDeviceAndDateModel({
-    required this.dateUsages,
-  });
-
-  factory PerDeviceAndDateModel.fromJson(Map<String, dynamic> json) {
-    Map<String, PerDeviceModel> dateUsages = {};
-    json.forEach((date, dateUsage) {
-      dateUsages[date] = PerDeviceModel.fromJson(dateUsage);
-    });
-
-    return PerDeviceAndDateModel(dateUsages: dateUsages);
+    return date.hashCode ^ deviceName.hashCode ^ usageHours.hashCode ^ wattage.hashCode ^ costPerKwh.hashCode;
   }
 }
