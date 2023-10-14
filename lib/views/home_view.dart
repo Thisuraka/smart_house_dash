@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_home/style.dart';
+import 'package:smart_home/utils/assets.dart';
 import 'package:smart_home/utils/strings.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
+import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
 import 'package:smart_home/views/per_device/per_device_tab.dart';
 
 class HomeView extends StatelessWidget {
@@ -10,6 +13,18 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 100,
+        backgroundColor: defaultColor,
+        title: Align(
+          alignment: Alignment.center,
+          child: Image.asset(
+            AppAssets.logoWithText,
+            fit: BoxFit.fitHeight,
+            height: 80,
+          ),
+        ),
+      ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -44,7 +59,10 @@ class HomeView extends StatelessWidget {
                   Expanded(
                     child: Container(
                       color: Colors.black12,
-                      child: const PerDeviceTab(),
+                      child: ChangeNotifierProvider(
+                        create: (context) => PerDeviceViewModel(),
+                        child: const PerDeviceTab(),
+                      ),
                     ),
                   ),
                 if (model.selectedIndex == 1)
