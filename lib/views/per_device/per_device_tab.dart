@@ -17,7 +17,9 @@ class PerDeviceTab extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           pageTitleSubtitle(
-              context: context, subtitle2: AppString.perDeviceTitle, subtitle3: AppString.perDeviceDesc),
+              context: context,
+              subtitle2: AppString.perDeviceTitle,
+              subtitle3: AppString.perDeviceDesc),
           DateFilterWidget(
             selectedDates: (DateTime startDate, DateTime endDate) {
               model.setStartAndEndDate(startDate, endDate);
@@ -26,22 +28,26 @@ class PerDeviceTab extends StatelessWidget {
           const SizedBox(
             height: 50,
           ),
-          Wrap(
-            children: [
-              Card(
-                elevation: 2,
-                child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child: PerDeviceDatagrid(perDeviceList: model.sampleData)),
-              ),
-              Card(
-                elevation: 2,
-                child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    child: PerDeviceChart(perDeviceList: model.sampleData)),
-              ),
-            ],
-          )
+          Expanded(
+            child: Row(
+              children: [
+                const Flexible(
+                  flex: 1,
+                  child: Card(
+                    elevation: 2,
+                    child: PerDeviceDatagrid(),
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Card(
+                    elevation: 2,
+                    child: PerDeviceChart(perDeviceList: model.sampleData),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       );
     });
