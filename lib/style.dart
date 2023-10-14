@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static Color defaultColor = const Color(0xFFAFBAF3);
   static Color accentColor = const Color(0xFF919BCF);
+  static Color bodyColor = const Color(0x54E3CFED);
 
   static Color inactiveColor = const Color(0xFFCFCFCF);
   static Color warningAlertColor = const Color(0xFFFF7F50);
@@ -10,8 +11,7 @@ class AppColors {
   static Color errorAlertColor = const Color(0xFFFF4757);
   static Color loadingPlaceholderColor = const Color(0xFFE0E0E0);
 
-  
-  static Color chartBlue =const Color(0xFF7BA7FF);
+  static Color chartBlue = const Color(0xFF7BA7FF);
 }
 
 //Fonts and text

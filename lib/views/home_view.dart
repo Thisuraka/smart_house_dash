@@ -61,7 +61,8 @@ class HomeView extends StatelessWidget {
                 if (model.selectedIndex == 0)
                   Expanded(
                     child: Container(
-                      color: Colors.black12,
+                      color: AppColors.bodyColor,
+                      padding: const EdgeInsets.all(20),
                       child: ChangeNotifierProvider(
                         create: (context) => PerDeviceViewModel(),
                         child: const PerDeviceTab(),
@@ -71,13 +72,15 @@ class HomeView extends StatelessWidget {
                 if (model.selectedIndex == 1)
                   Expanded(
                     child: Container(
-                      color: Colors.black12,
+                      color: AppColors.bodyColor,
+                      padding: const EdgeInsets.all(20),
                     ),
                   ),
                 if (model.selectedIndex == 2)
                   Expanded(
                     child: Container(
-                      color: Colors.black12,
+                      color: AppColors.bodyColor,
+                      padding: const EdgeInsets.all(20),
                     ),
                   ),
               ],
