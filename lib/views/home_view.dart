@@ -5,6 +5,7 @@ import 'package:smart_home/utils/assets.dart';
 import 'package:smart_home/utils/strings.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
+import 'package:smart_home/views/device_summary/device_summary_tab.dart';
 import 'package:smart_home/views/per_date/per_date_tab.dart';
 import 'package:smart_home/views/per_device/per_device_tab.dart';
 import 'package:smart_home/widgets/loader_overlay.dart';
@@ -56,8 +57,8 @@ class HomeView extends StatelessWidget {
                         label: Text(AppString.perDay),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.circle, color: Colors.white),
-                        label: Text('Set here'),
+                        icon: Icon(Icons.device_hub, color: Colors.white),
+                        label: Text(AppString.deviceSummary),
                       ),
                     ],
                   ),
@@ -81,6 +82,7 @@ class HomeView extends StatelessWidget {
                       child: Container(
                         color: AppColors.bodyColor,
                         padding: const EdgeInsets.all(20),
+                        child: const DeviceSummaryTab(),
                       ),
                     ),
                 ],

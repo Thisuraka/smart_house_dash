@@ -24,4 +24,9 @@ class AppString {
   static const perDateTitle = "Per Date Information";
   static const perDateDesc = "Electricity usage information for selected date range";
   static const pickStartEndDate = "Pick start and end date";
+
+    // -------------------------- Device summary --------------------------
+  static const deviceSummary = "Device summary";
+  static const deviceSummaryTitle = "Device summary Information";
+  static const deviceSummaryDesc = "Electricity usage information for all devices";
 }
