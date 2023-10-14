@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/utils/navigation_service.dart';
+import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
 import 'package:smart_home/views/home_view.dart';
 
 void main() {
@@ -10,6 +11,12 @@ void main() {
     providers: [
       ChangeNotifierProvider(
         create: ((context) => NavigationViewModel()),
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => PerDeviceViewModel()),
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => LoaderViewmodel()),
       ),
     ],
     child: const MyApp(),
@@ -29,7 +36,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const HomeView(),
-      builder: EasyLoading.init(),
     );
   }
 }

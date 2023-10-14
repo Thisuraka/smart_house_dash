@@ -3,8 +3,9 @@ import 'package:smart_home/network/network.dart';
 import 'package:smart_home/utils/enums/request_types.dart';
 
 class Service {
-  Future<BaseAPIResponse> perDeviceAndDateRequest(Function(int, int)? onSendProgress, String url) async {
-    BaseAPIResponse response = await Network.request(url: url, method: RequestType.post, body: {});
+  Future<BaseAPIResponse> perDeviceAndDateRequest(String url, Map<String, dynamic>? body) async {
+    BaseAPIResponse response = await Network.request(url: url, method: RequestType.post, body: body);
+
     return response;
   }
 }

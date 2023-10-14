@@ -7,10 +7,8 @@ class Network {
       {required RequestType method,
       required String url,
       Map<String, dynamic>? body,
-      bool isFormData = false,
       Map<String, dynamic>? headers,
       Map<String, dynamic>? queryParams}) async {
-    //Var init
     final dio = Dio();
     Response? response;
 
@@ -22,22 +20,22 @@ class Network {
           response = await dio.get(url, queryParameters: queryParams);
           break;
         case RequestType.post:
-          response = response = await dio.post(url, data: isFormData ? FormData.fromMap(body ?? {}) : body);
+          response = response = await dio.post(url, data: body);
+
           break;
         case RequestType.put:
-          response = response = await dio.put(url, data: isFormData ? FormData.fromMap(body ?? {}) : body);
+          response = response = await dio.put(url, data: body);
           break;
         case RequestType.patch:
           break;
         case RequestType.delete:
-          response = response = await dio.delete(url, data: isFormData ? FormData.fromMap(body ?? {}) : body);
+          response = response = await dio.delete(url, data: body);
           break;
       }
-
-      if (response!.statusCode == 200 && response.data["code"] == 200) {
-        return BaseAPIResponse(data: response.data, error: false, status: response.statusCode);
+      if (response!.statusCode == 200 && response.data["status_code"] == 200) {
+        return BaseAPIResponse(data: response.data['data'], error: false, status: response.statusCode);
       } else {
-        return BaseAPIResponse(data: response.data, error: true, status: response.statusCode);
+        return BaseAPIResponse(data: response.data['data'], error: true, status: response.statusCode);
       }
     } on DioException catch (e) {
       return BaseAPIResponse(data: null, error: true, status: e.response?.statusCode);

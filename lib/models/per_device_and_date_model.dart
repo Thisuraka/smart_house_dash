@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class PerDeviceModel {
@@ -45,17 +44,24 @@ class PerDeviceModel {
   factory PerDeviceModel.fromMap(Map<String, dynamic> map) {
     return PerDeviceModel(
       date: map['date'] != null ? map['date'] as String : null,
-      deviceName: map['deviceName'] != null ? map['deviceName'] as String : null,
-      usageHours: map['usageHours'] != null ? map['usageHours'] as int : null,
+      deviceName: map['device'] != null ? map['device'] as String : null,
+      usageHours: map['usage_hours'] != null ? map['usage_hours'] as int : null,
       wattage: map['wattage'] != null ? map['wattage'] as int : null,
-      costPerKwh: map['costPerKwh'] != null ? map['costPerKwh'] as double : null,
+      costPerKwh: map['cost_per_kwh'] != null ? map['cost_per_kwh'] as double : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory PerDeviceModel.fromJson(String source) =>
-      PerDeviceModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory PerDeviceModel.fromJson(Map<String, dynamic> json) {
+    return PerDeviceModel(
+      date: json['date'],
+      deviceName: json['device'],
+      usageHours: int.parse(json['usage_hours']),
+      wattage: int.parse(json['wattage']),
+      costPerKwh: double.parse(json['cost_per_kwh']),
+    );
+  }
 
   @override
   String toString() {

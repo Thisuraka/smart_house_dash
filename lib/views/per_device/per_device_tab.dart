@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:smart_home/style.dart';
 import 'package:smart_home/utils/strings.dart';
 import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
 import 'package:smart_home/views/per_device/per_device_chart.dart';
@@ -17,35 +19,57 @@ class PerDeviceTab extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           pageTitleSubtitle(
-              context: context,
-              subtitle2: AppString.perDeviceTitle,
-              subtitle3: AppString.perDeviceDesc),
-          DateFilterWidget(
-            selectedDates: (DateTime startDate, DateTime endDate) {
-              model.setStartAndEndDate(startDate, endDate);
-            },
+              context: context, subtitle2: AppString.perDeviceTitle, subtitle3: AppString.perDeviceDesc),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DateFilterWidget(
+                pickedDate: model.pickedDate,
+                selectedDates: (DateTime pickedDate) {
+                  model.setDate(pickedDate);
+                },
+              ),
+              IconButton(
+                  onPressed: () {
+                    model.process();
+                  },
+                  icon: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: AppColors.defaultColor,
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: const Icon(
+                      Icons.download_rounded,
+                      color: Colors.white,
+                    ),
+                  ))
+            ],
           ),
           const SizedBox(
             height: 50,
           ),
-          Expanded(
-            child: Row(
-              children: [
-                const Flexible(
-                  flex: 1,
-                  child: Card(
-                    elevation: 2,
-                    child: PerDeviceDatagrid(),
+          Visibility(
+            visible: model.deviceList.isNotEmpty,
+            child: Expanded(
+              child: Row(
+                children: [
+                  const Flexible(
+                    flex: 2,
+                    child: Card(
+                      elevation: 2,
+                      child: PerDeviceDatagrid(),
+                    ),
                   ),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Card(
-                    elevation: 2,
-                    child: PerDeviceChart(perDeviceList: model.sampleData),
+                  Flexible(
+                    flex: 2,
+                    child: Card(
+                      elevation: 2,
+                      child: PerDeviceChart(perDeviceList: model.deviceList),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

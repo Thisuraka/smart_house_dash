@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
 import 'package:smart_home/models/per_device_and_date_model.dart';
 import 'package:smart_home/style.dart';
 import 'package:smart_home/utils/strings.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class PerDeviceChart extends StatelessWidget {
   const PerDeviceChart({required this.perDeviceList, super.key});
@@ -34,7 +35,7 @@ class PerDeviceChart extends StatelessWidget {
   List<PerDeviceChartData> getDataForGraph() {
     List<PerDeviceChartData> dataSet = [];
 
-    for (final data in perDeviceList) {
+    for (final data in perDeviceList.reversed) {
       dataSet.add(
         PerDeviceChartData(
           data.deviceName ?? 'ERROR',
