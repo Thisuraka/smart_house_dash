@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "EnerGz",
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigationService.navigatorKey,
       theme: ThemeData(
