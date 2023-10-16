@@ -20,4 +20,10 @@ class Service {
 
     return response;
   }
+
+  Future<BaseAPIResponse> consumptionRequest(String url, Map<String, dynamic>? body) async {
+    BaseAPIResponse response = await Network.request(url: url, method: RequestType.post, body: body);
+
+    return response;
+  }
 }

@@ -25,8 +25,20 @@ class AppString {
   static const perDateDesc = "Electricity usage information for selected date range";
   static const pickStartEndDate = "Pick start and end date";
 
-    // -------------------------- Device summary --------------------------
+  // -------------------------- Device summary --------------------------
   static const deviceSummary = "Device summary";
-  static const deviceSummaryTitle = "Device summary Information";
+  static const deviceSummaryTitle = "Device Summary Information";
   static const deviceSummaryDesc = "Electricity usage information for all devices";
+
+  // -------------------------- Electricity consumption --------------------------
+  static const consumptionSummary = "Consumption";
+  static const consumptionSummaryTitle = "Electricity Consumption Information";
+  static const consumptionSummaryDesc = "Electricity usage information as opposed to normal home";
+  static const analysisPerMonth = "Compared to last month";
+  static const analysisPerHome = "Compared to none smart home";
+  static const difference = "Difference";
+  static const percntage = "Percentage";
+  static const by = "by";
+  static const whichIs = "which is";
+  static const noDataPickMonth = 'No data for selected month';
 }

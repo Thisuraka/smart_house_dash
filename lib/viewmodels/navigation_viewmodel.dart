@@ -12,6 +12,7 @@ class NavigationViewModel extends ChangeNotifier {
       Provider.of<DeviceSummaryViewModel>(NavigationService.navigatorKey.currentState!.context, listen: false)
           .process();
     }
+
     notifyListeners();
   }
 }

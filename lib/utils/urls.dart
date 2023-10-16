@@ -26,4 +26,12 @@ class UrlConstants {
       return "";
     }
   }
+
+  static String getConsumptionAnalysisEndpoint() {
+    if (environment == "development") {
+      return "$baseUrl/consumption_analysis";
+    } else {
+      return "";
+    }
+  }
 }

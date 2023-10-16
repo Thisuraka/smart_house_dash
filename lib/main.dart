@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/utils/navigation_service.dart';
+import 'package:smart_home/viewmodels/consumption_viewmodel.dart';
 import 'package:smart_home/viewmodels/device_summary_viewmodel.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
@@ -22,6 +23,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: ((context) => PerDateViewModel()),
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => ConsumptionViewModel()),
       ),
       ChangeNotifierProvider(
         create: ((context) => LoaderViewmodel()),

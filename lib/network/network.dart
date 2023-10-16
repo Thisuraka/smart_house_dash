@@ -13,7 +13,6 @@ class Network {
     Response? response;
 
     if (headers != null) {}
-
     try {
       switch (method) {
         case RequestType.get:
