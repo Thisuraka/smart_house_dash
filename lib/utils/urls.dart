@@ -27,6 +27,14 @@ class UrlConstants {
     }
   }
 
+  static String getMonthlyPredictionEndpoint() {
+    if (environment == "development") {
+      return "$baseUrl/monthly-prediction";
+    } else {
+      return "";
+    }
+  }
+
   static String getConsumptionAnalysisEndpoint() {
     if (environment == "development") {
       return "$baseUrl/consumption_analysis";

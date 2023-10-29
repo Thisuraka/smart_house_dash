@@ -32,7 +32,7 @@ class PerDateViewModel extends ChangeNotifier {
     Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(true);
 
     try {
-      BaseAPIResponse response = await service.perDateRequest(UrlConstants.getPerDateEndpoint(), {
+      BaseAPIResponse response = await service.perDateRequest( {
         'start_date': DateFormat('M/d/y').format(startDate!),
         'end_date': DateFormat('M/d/y').format(endDate!),
         'page': page,

@@ -31,7 +31,7 @@ class PerDeviceViewModel extends ChangeNotifier {
 
     try {
       BaseAPIResponse response =
-          await service.perDeviceAndDateRequest(UrlConstants.getPerDeviceAndDateEndpoint(), {
+          await service.perDeviceAndDateRequest( {
         'date': DateFormat('M/d/y').format(pickedDate!),
         'page': page,
       });

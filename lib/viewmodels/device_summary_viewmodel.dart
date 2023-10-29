@@ -6,7 +6,6 @@ import 'package:smart_home/models/device_smmary.dart';
 import 'package:smart_home/service/service.dart';
 import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/utils/strings.dart';
-import 'package:smart_home/utils/urls.dart';
 import 'package:smart_home/utils/utils.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 
@@ -22,7 +21,7 @@ class DeviceSummaryViewModel extends ChangeNotifier {
     Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(true);
 
     try {
-      BaseAPIResponse response = await service.deviceSummaryRequest(UrlConstants.getDeviceSummaryEndpoint());
+      BaseAPIResponse response = await service.deviceSummaryRequest();
       if (response.error) {
         if (context.mounted) {
           Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
