@@ -7,7 +7,6 @@ import 'package:smart_home/models/per_device_model.dart';
 import 'package:smart_home/service/service.dart';
 import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/utils/strings.dart';
-import 'package:smart_home/utils/urls.dart';
 import 'package:smart_home/utils/utils.dart';
 import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 
@@ -30,8 +29,7 @@ class PerDeviceViewModel extends ChangeNotifier {
     Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(true);
 
     try {
-      BaseAPIResponse response =
-          await service.perDeviceAndDateRequest( {
+      BaseAPIResponse response = await service.perDeviceAndDateRequest({
         'date': DateFormat('M/d/y').format(pickedDate!),
         'page': page,
       });

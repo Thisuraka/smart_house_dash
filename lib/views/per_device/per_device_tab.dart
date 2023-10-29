@@ -30,20 +30,21 @@ class PerDeviceTab extends StatelessWidget {
                 },
               ),
               IconButton(
-                  onPressed: () {
-                    model.process();
-                  },
-                  icon: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: AppColors.defaultColor,
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: const Icon(
-                      Icons.download_rounded,
-                      color: Colors.white,
-                    ),
-                  ))
+                onPressed: () {
+                  model.process();
+                },
+                icon: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: AppColors.defaultColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: const Icon(
+                    Icons.download_rounded,
+                    color: Colors.white,
+                  ),
+                ),
+              )
             ],
           ),
           const SizedBox(

@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import '../style.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +39,7 @@ class RoundedTextboxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 50,
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(horizontal: 45, vertical: verticalMargin),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0.0),
@@ -55,7 +57,7 @@ class RoundedTextboxWidget extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         cursorColor: Colors.purple,
-        cursorHeight: 15,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: labelText,

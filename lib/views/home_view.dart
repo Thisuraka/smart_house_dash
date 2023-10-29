@@ -7,6 +7,7 @@ import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
 import 'package:smart_home/views/device_summary/device_summary_tab.dart';
 import 'package:smart_home/views/electricity_consumption/consumption_tab.dart';
+import 'package:smart_home/views/month_prediction/month_prediction_tab.dart';
 import 'package:smart_home/views/per_date/per_date_tab.dart';
 import 'package:smart_home/views/per_device/per_device_tab.dart';
 import 'package:smart_home/widgets/loader_overlay.dart';
@@ -65,6 +66,10 @@ class HomeView extends StatelessWidget {
                         icon: Icon(Icons.electrical_services_rounded, color: Colors.white),
                         label: Text(AppString.consumptionSummary),
                       ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.electric_bolt_outlined, color: Colors.white),
+                        label: Text(AppString.consumptionSummary),
+                      ),
                     ],
                   ),
                   const VerticalDivider(thickness: 1, width: 1, color: Colors.black12),
@@ -96,6 +101,14 @@ class HomeView extends StatelessWidget {
                         color: AppColors.bodyColor,
                         padding: const EdgeInsets.all(20),
                         child: const ConsumptionTab(),
+                      ),
+                    ),
+                  if (model.selectedIndex == 4)
+                    Expanded(
+                      child: Container(
+                        color: AppColors.bodyColor,
+                        padding: const EdgeInsets.all(20),
+                        child: const ConsumptionPredictionTab(),
                       ),
                     ),
                 ],

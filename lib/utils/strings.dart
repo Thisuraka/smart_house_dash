@@ -5,6 +5,7 @@ class AppString {
   static const selectStartEndDate = 'Select start and end date';
   static const selectDate = 'Select date';
   static const dataUnavailable = 'Data Unavailable';
+  static const invalidInput = 'Invalid input';
 
   // -------------------------- Per device --------------------------
   static const perDevice = "Per Device";
@@ -18,6 +19,7 @@ class AppString {
   static const perDeviceDataTableHeaderWattage = 'Wattage';
   static const perDeviceDataTableHeaderCost = 'Cost (kW/h)';
   static const perDeviceDataTableHeaderTotalCost = 'Total Cost';
+  static const noData = 'No data to show';
 
   // -------------------------- Per device --------------------------
   static const perDay = "Per Day";
@@ -41,4 +43,11 @@ class AppString {
   static const by = "by";
   static const whichIs = "which is";
   static const noDataPickMonth = 'No data for selected month';
+  
+  // -------------------------- Electricity predicition --------------------------
+  static const consumptionPredictionTitle = "Electricity Consumption Prediction";
+  static const consumptionPredictionDesc = "Electricity usage information for next months";
+  static const consumptionPredictionDate= "Date";
+  static const consumptionPredictionMonth= "Month";
+  static const consumptionPredictionSetMonths= "Set number of months";
 }
