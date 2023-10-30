@@ -15,6 +15,7 @@ dependencies:
   animations: ^2.0.7
   cupertino_icons: ^1.0.2
   dio: ^5.2.0+1
+  file_picker: ^6.0.0
   loading_overlay:
   provider: ^6.0.5
   shared_preferences: ^2.1.2

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/style.dart';
 import 'package:smart_home/utils/navigation_service.dart';
@@ -9,8 +8,6 @@ import 'package:smart_home/viewmodels/consumption_prediction_viewmodel.dart';
 import 'package:smart_home/views/month_prediction/month_pred_datagrid.dart';
 import 'package:smart_home/widgets/page_title_subtitle.dart';
 import 'package:smart_home/widgets/rounded_textbox_widget.dart';
-import 'package:smart_home/widgets/tables/table_header_item.dart';
-import 'package:smart_home/widgets/tables/table_row_item.dart';
 
 class ConsumptionPredictionTab extends StatelessWidget {
   const ConsumptionPredictionTab({super.key});

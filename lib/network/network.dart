@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:smart_home/models/base_api_response.dart';
 import 'package:smart_home/utils/enums/request_types.dart';
 
@@ -36,6 +38,37 @@ class Network {
       } else {
         return BaseAPIResponse(data: response.data['data'], error: true, status: response.statusCode);
       }
+    } on DioException catch (e) {
+      return BaseAPIResponse(data: null, error: true, status: e.response?.statusCode);
+    }
+  }
+
+  static Future<BaseAPIResponse> upload(
+      {required FilePickerResult? picked,
+      required String endpoint,
+      required Function(int, int)? onSendProgress}) async {
+    final PlatformFile file = picked!.files.first;
+
+    List<int> fileBytes = file.bytes!.toList();
+
+    FormData formData = FormData.fromMap({
+      "csv_file": MultipartFile.fromBytes(
+        fileBytes,
+        filename: file.name,
+      ),
+    });
+
+    Dio dio = Dio();
+    dio.options.connectTimeout = const Duration(seconds: 20);
+
+    try {
+      var response = await dio.post(
+        endpoint,
+        data: formData,
+        onSendProgress: onSendProgress,
+      );
+
+      return BaseAPIResponse(data: response.data, error: false, status: response.statusCode);
     } on DioException catch (e) {
       return BaseAPIResponse(data: null, error: true, status: e.response?.statusCode);
     }

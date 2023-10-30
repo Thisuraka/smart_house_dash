@@ -8,6 +8,7 @@ import 'package:smart_home/viewmodels/loader_viewmodel.dart';
 import 'package:smart_home/viewmodels/navigation_viewmodel.dart';
 import 'package:smart_home/viewmodels/per_date_viewmodel.dart';
 import 'package:smart_home/viewmodels/per_device_viewmodel.dart';
+import 'package:smart_home/viewmodels/predict_attack_viewmodel.dart';
 import 'package:smart_home/views/home_view.dart';
 
 void main() {
@@ -30,6 +31,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: ((context) => ConsumptionPredictionViewModel()),
+      ),
+      ChangeNotifierProvider(
+        create: ((context) => PredictionAttackViewModel()),
       ),
       ChangeNotifierProvider(
         create: ((context) => LoaderViewmodel()),

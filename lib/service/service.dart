@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:smart_home/models/base_api_response.dart';
 import 'package:smart_home/network/network.dart';
 import 'package:smart_home/utils/enums/request_types.dart';
@@ -36,6 +37,17 @@ class Service {
     BaseAPIResponse response = await Network.request(
         url: UrlConstants.getMonthlyPredictionEndpoint(), method: RequestType.post, body: body);
 
+    return response;
+  }
+
+  Future<BaseAPIResponse> predictAttackRequest(
+    FilePickerResult file,
+    Function(int, int)? onSendProgress,
+  ) async {
+    BaseAPIResponse response = await Network.upload(
+        picked: file,
+        endpoint: UrlConstants.getPredictAttackEndpoint(),
+        onSendProgress: onSendProgress);
     return response;
   }
 }

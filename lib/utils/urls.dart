@@ -42,4 +42,12 @@ class UrlConstants {
       return "";
     }
   }
+
+  static String getPredictAttackEndpoint() {
+    if (environment == "development") {
+      return "$baseUrl/predict_attack";
+    } else {
+      return "";
+    }
+  }
 }

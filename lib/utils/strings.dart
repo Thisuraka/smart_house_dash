@@ -43,11 +43,18 @@ class AppString {
   static const by = "by";
   static const whichIs = "which is";
   static const noDataPickMonth = 'No data for selected month';
-  
+
   // -------------------------- Electricity predicition --------------------------
+  static const consumptionPredictionTitle1 = "Consumption\nPrediction";
   static const consumptionPredictionTitle = "Electricity Consumption Prediction";
   static const consumptionPredictionDesc = "Electricity usage information for next months";
-  static const consumptionPredictionDate= "Date";
-  static const consumptionPredictionMonth= "Month";
-  static const consumptionPredictionSetMonths= "Set number of months";
+  static const consumptionPredictionDate = "Date";
+  static const consumptionPredictionMonth = "Month";
+  static const consumptionPredictionSetMonths = "Set number of months";
+
+  // -------------------------- Attack predicition --------------------------
+  static const attackPredictionTitle = "Attack\nPrediction";
+  static const attackPredictionUpload = "Upload CSV file";
+  static const attackPredictionTitle2 = "Predicted attacks";
+  static const attackPredictionDesc = "";
 }
