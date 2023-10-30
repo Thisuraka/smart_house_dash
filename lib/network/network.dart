@@ -48,14 +48,9 @@ class Network {
       required String endpoint,
       required Function(int, int)? onSendProgress}) async {
     final PlatformFile file = picked!.files.first;
-
-    List<int> fileBytes = file.bytes!.toList();
-
+    print(picked.files);
     FormData formData = FormData.fromMap({
-      "csv_file": MultipartFile.fromBytes(
-        fileBytes,
-        filename: file.name,
-      ),
+      "csv_file": MultipartFile.fromBytes(file.bytes!, filename: file.name),
     });
 
     Dio dio = Dio();

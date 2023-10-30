@@ -22,8 +22,8 @@ class MonthPredDatagrid extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TableHeaderItem(content: AppString.consumptionPredictionDate),
                   TableHeaderItem(content: AppString.consumptionPredictionMonth),
+                  TableHeaderItem(content: AppString.consumptionPredictionUnits),
                 ],
               ),
             ),

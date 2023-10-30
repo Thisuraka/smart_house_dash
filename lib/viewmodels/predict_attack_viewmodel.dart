@@ -22,36 +22,44 @@ class PredictionAttackViewModel extends ChangeNotifier {
     Function(int, int)? onSendProgress;
     BuildContext context = NavigationService.navigatorKey.currentState!.context;
 
-    Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(true);
-    try {
-      BaseAPIResponse response = await service.predictAttackRequest(pickedFile!, onSendProgress);
-      if (response.error) {
-        if (context.mounted) {
-          Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
-        }
-        Utils.showSnackBar(AppString.somethingWentWrong, NavigationService.navigatorKey.currentContext!);
-      } else {
-        if (context.mounted) {
-          Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
-        }
-        if (response.data == null) {
-          Utils.showSnackBar(AppString.noData, NavigationService.navigatorKey.currentContext!);
-        } else {
-          Map<String, dynamic> jsonMap = json.decode(response.data);
-          attackPredList = (jsonMap['data'] as List)
-              .map((data) => AttackPredictModel(
-                    attack: data['attack'],
-                    count: int.tryParse(data['count']) ?? 0,
-                  ))
-              .toList();
-        }
-      }
-    } catch (e) {
-      if (context.mounted) {
-        Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
-      }
-      Utils.showSnackBar(AppString.somethingWentWrong, NavigationService.navigatorKey.currentContext!);
-    }
+    attackPredList = (sample)
+        .map((data) => AttackPredictModel(
+              attack: data['attack'],
+              count: int.tryParse(data['count']) ?? 0,
+            ))
+        .toList();
+
+    // Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(true);
+    // try {
+    //   BaseAPIResponse response = await service.predictAttackRequest(pickedFile!, onSendProgress);
+    //   if (response.error) {
+    //     if (context.mounted) {
+    //       Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
+    //     }
+    //     Utils.showSnackBar(AppString.somethingWentWrong, NavigationService.navigatorKey.currentContext!);
+    //   } else {
+    //     if (context.mounted) {
+    //       Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
+    //     }
+    //     if (response.data == null) {
+    //       Utils.showSnackBar(AppString.noData, NavigationService.navigatorKey.currentContext!);
+    //     } else {
+    //       Map<String, dynamic> jsonMap = json.decode(response.data);
+    //       attackPredList = (jsonMap['data'] as List)
+    //           .map((data) => AttackPredictModel(
+    //                 attack: data['attack'],
+    //                 count: int.tryParse(data['count']) ?? 0,
+    //               ))
+    //           .toList();
+    //     }
+    //   }
+    // } catch (e) {
+    //   print(e);
+    //   if (context.mounted) {
+    //     Provider.of<LoaderViewmodel>(context, listen: false).updateLoading(false);
+    //   }
+    //   Utils.showSnackBar(AppString.somethingWentWrong, NavigationService.navigatorKey.currentContext!);
+    // }
 
     notifyListeners();
   }

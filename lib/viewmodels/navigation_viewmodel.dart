@@ -4,7 +4,7 @@ import 'package:smart_home/utils/navigation_service.dart';
 import 'package:smart_home/viewmodels/device_summary_viewmodel.dart';
 
 class NavigationViewModel extends ChangeNotifier {
-  int selectedIndex = 5;
+  int selectedIndex = 0;
 
   updateIndex(int index) {
     selectedIndex = index;

@@ -48,7 +48,7 @@ class AppString {
   static const consumptionPredictionTitle1 = "Consumption\nPrediction";
   static const consumptionPredictionTitle = "Electricity Consumption Prediction";
   static const consumptionPredictionDesc = "Electricity usage information for next months";
-  static const consumptionPredictionDate = "Date";
+  static const consumptionPredictionUnits = "Units";
   static const consumptionPredictionMonth = "Month";
   static const consumptionPredictionSetMonths = "Set number of months";
 
